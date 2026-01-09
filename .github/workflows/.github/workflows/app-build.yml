@@ -1,0 +1,20 @@
+name: Application build
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate application files
+        run: |
+          test -f index.html
+          test -s index.html
+          echo "Application build/validation successful"
